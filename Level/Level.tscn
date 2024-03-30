@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca2ymrwpyvvd"]
+
+[ext_resource type="Script" path="res://Level/Level.gd" id="1_5gj1i"]
+[ext_resource type="Texture2D" uid="uid://cj4r5a3dxrdbc" path="res://icon.svg" id="1_g47f0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf1vp"]
+size = Vector2(32, 970)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g05i1"]
+size = Vector2(1488, 100)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_5gj1i")
+
+[node name="StartNode" type="Node2D" parent="."]
+position = Vector2(120, 516)
+
+[node name="Sprite" type="Sprite2D" parent="StartNode"]
+texture = ExtResource("1_g47f0")
+
+[node name="EndNode" type="Node2D" parent="."]
+position = Vector2(1152, 516)
+
+[node name="Sprite" type="Sprite2D" parent="EndNode"]
+texture = ExtResource("1_g47f0")
+
+[node name="EndLevel" type="Area2D" parent="."]
+position = Vector2(1152, 481)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndLevel"]
+position = Vector2(0, -400)
+shape = SubResource("RectangleShape2D_rf1vp")
+
+[node name="Floor" type="RigidBody2D" parent="."]
+position = Vector2(587, 621)
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_g05i1")
